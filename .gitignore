@@ -1,0 +1,7 @@
+mruby
+*.o
+*.elf
+bytecode.h
+bootcode.bin
+kernel.img
+
