@@ -9,6 +9,9 @@ Raspberry Pi 上で mruby を Linux 抜きで動かす
 * main.rb : Ruby レベルのエントリポイント。コンパイルされたバイトコードが使われる
 * main.c : C 言語レベルのエントリポイント。mruby_open() して実際にバイトコードを実行するプログラム
 * bytecode.h : コンパイル済みの main.rb を C のヘッダファイルにしたもの。バイトコードデータファイル
+* memmap : リンカスクリプト (メモリ上にオブジェクトをどう配置するかの定義)
+* syscalls.c : newlib が要求するシステムコールのモック的実装 (ほぼ参考文献からのコピー)
+* vectors.s : アセンブラレベルのローレベル処理定義
 * mrbgems/mruby-raspberrypi-gpio/ : Raspberry Pi の GPIO を使うための mrbgem。ビルド時に mruby の mrbgems ディレクトリに symlink している
 * kernel.img : ARM 実行形式のファイル。これを SD カードにコピーして実行させる
 * .gdbinit :  arm-none-eabi-gdb を実行したときにコンパイル済み main.elf を実行するためのもの
