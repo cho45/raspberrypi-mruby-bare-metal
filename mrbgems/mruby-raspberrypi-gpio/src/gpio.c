@@ -14,7 +14,7 @@
 extern void PUT32 ( unsigned int, unsigned int );
 extern unsigned int GET32 ( unsigned int );
 
-static uint16_t micro_second = 0;
+// static uint16_t micro_second = 0;
 
 //void TIM2_IRQHandler ( void ) {
 //	micro_second++;
@@ -38,9 +38,8 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_write(mrb_state* mrb,  mrb_value
 	mrb_int pin; mrb_bool state;
 	mrb_get_args(mrb, "ib", &pin, &state);
 
-	if (state == 1) {
+	if (state) {
 		GPSET(pin);
-		PUT32(pin < 32 ? GPSET0 : GPSET1, 1 << pin);
 	} else {
 		GPCLR(pin);
 	}
@@ -59,6 +58,8 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_direction(mrb_state* mrb,  mrb_v
 	mrb_value state; // state is symbol
 	mrb_int pin;
 	mrb_get_args(mrb, "io", &pin, &state);
+
+	mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(pin, 0b001);
 
 	if (mrb_intern_cstr(mrb, "in") == mrb_symbol(state)) {
 		mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(pin, 0b000);
@@ -84,9 +85,9 @@ void mrb_mruby_raspberrypi_gpio_gem_init(mrb_state* mrb) {
 	// define ruby module
 	GPIO = mrb_define_module(mrb, "GPIO");
 
-	mrb_define_module_function(mrb, GPIO, "write", mrb_mruby_raspberrypi_gpio_gem_write, ARGS_REQ(1));
+	mrb_define_module_function(mrb, GPIO, "write", mrb_mruby_raspberrypi_gpio_gem_write, ARGS_REQ(2));
 	mrb_define_module_function(mrb, GPIO, "read", mrb_mruby_raspberrypi_gpio_gem_read, ARGS_REQ(1));
-	mrb_define_module_function(mrb, GPIO, "direction", mrb_mruby_raspberrypi_gpio_gem_direction, ARGS_REQ(1));
+	mrb_define_module_function(mrb, GPIO, "direction", mrb_mruby_raspberrypi_gpio_gem_direction, ARGS_REQ(2));
 }
 
 void mrb_mruby_raspberrypi_gpio_gem_final(mrb_state* mrb) {
