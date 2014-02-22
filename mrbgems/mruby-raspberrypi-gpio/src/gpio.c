@@ -59,8 +59,6 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_direction(mrb_state* mrb,  mrb_v
 	mrb_int pin;
 	mrb_get_args(mrb, "io", &pin, &state);
 
-	mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(pin, 0b001);
-
 	if (mrb_intern_cstr(mrb, "in") == mrb_symbol(state)) {
 		mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(pin, 0b000);
 	} else
