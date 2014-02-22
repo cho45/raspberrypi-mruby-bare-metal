@@ -1441,213 +1441,209 @@ LOAD syscalls.o
  .ARM.extab     0x0000000000057998        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
  .ARM.extab     0x0000000000057998        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
 
-.glue_7         0x0000000000057998        0x0
+.ARM.exidx      0x0000000000057998        0x8
+ .ARM.exidx     0x0000000000057998        0x8 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .ARM.exidx     0x00000000000579a0        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+                                          0x8 (size before relaxing)
+
+.glue_7         0x00000000000579a0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000057998        0x0
+.glue_7t        0x00000000000579a0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000057998        0x0
+.vfp11_veneer   0x00000000000579a0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000057998        0x0
+.v4_bx          0x00000000000579a0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000057998        0x0
+.iplt           0x00000000000579a0        0x0
  .iplt          0x0000000000000000        0x0 vectors.o
 
-.data           0x0000000000057998      0xa20
-                0x0000000000057998                __data_start__ = .
- *(.data .data.*)
- .data          0x0000000000057998        0x0 vectors.o
- .data          0x0000000000057998        0x0 main.o
- .data          0x0000000000057998        0x0 syscalls.o
- .data          0x0000000000057998        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(load.o)
- .data          0x0000000000057998        0x4 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(proc.o)
- .data          0x000000000005799c        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(state.o)
- .data          0x000000000005799c        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(string.o)
- .data          0x000000000005799c        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(symbol.o)
- .data          0x000000000005799c        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(variable.o)
- .data          0x000000000005799c      0x130 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(vm.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(array.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(class.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(crc.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(debug.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(error.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(gc.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(hash.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(init.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(kernel.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(numeric.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(object.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(print.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(range.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(version.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(mrblib.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(backtrace.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(compar.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(enum.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(etc.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-abort.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-abs.o)
- .data          0x0000000000057acc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
- .data.__ctype_ptr__
-                0x0000000000057acc        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
-                0x0000000000057acc                __ctype_ptr__
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-errno.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-exit.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fputs.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fread.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fseek.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ftell.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fwrite.o)
- .data          0x0000000000057ad0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
- .data.impure_data
-                0x0000000000057ad0      0x428 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
- .data._impure_ptr
-                0x0000000000057ef8        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
-                0x0000000000057ef8                _impure_ptr
- .data          0x0000000000057efc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
- .data          0x0000000000057efc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
- .data          0x0000000000057efc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
- .data.__malloc_av_
-                0x0000000000057efc      0x408 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
-                0x0000000000057efc                __malloc_av_
- .data.__malloc_trim_threshold
-                0x0000000000058304        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
-                0x0000000000058304                __malloc_trim_threshold
- .data.__malloc_sbrk_base
-                0x0000000000058308        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
-                0x0000000000058308                __malloc_sbrk_base
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memchr.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memcpy.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memset.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-printf.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-realloc.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-reent.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-refill.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-setjmp.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-signal.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-signalr.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
- .data          0x000000000005830c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
- .data.fpi.5209
-                0x000000000005830c       0x14 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
- .data.fpinan.5245
-                0x0000000000058320       0x14 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtoul.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vsnprintf.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-writer.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-atexit.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-closer.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fini.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-freer.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-gdtoa-gethex.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-gdtoa-hexnan.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
- .data          0x0000000000058334        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
- .data.lc_message_charset
-                0x0000000000058334       0x20 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
- .data.lconv    0x0000000000058354       0x38 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
- .data.lc_ctype_charset
-                0x000000000005838c       0x20 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
- .data.__mb_cur_max
-                0x00000000000583ac        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
-                0x00000000000583ac                __mb_cur_max
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-readr.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strncmp.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-svfprintf.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__atexit.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-svfiprintf.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
- .data          0x00000000000583b0        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
- .data.__wctomb
-                0x00000000000583b0        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
-                0x00000000000583b0                __wctomb
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_ceil.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_floor.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_fmod.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_log10.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_pow.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_fmod.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_log10.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_pow.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_sqrt.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_fabs.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_finite.o)
- .data          0x00000000000583b4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_lib_ver.o)
- .data.__fdlib_version
-                0x00000000000583b4        0x1 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_lib_ver.o)
-                0x00000000000583b4                __fdlib_version
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_matherr.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_nan.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_rint.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_scalbn.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_log.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_copysign.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_addsubdf3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_muldivdf3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_cmpdf2.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_fixdfsi.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_fixunsdfsi.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_truncdfsf2.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_cmpsf2.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
- .data          0x00000000000583b5        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
-                0x00000000000583b8                . = ALIGN (0x8)
- *fill*         0x00000000000583b5        0x3 
-                0x00000000000583b8                __data_end__ = .
-                0x0000000000000a20                __data_size__ = (__data_end__ - __data_start__)
-                0x00000000000583b8                __exidx_start = .
+.rel.dyn        0x00000000000579a0        0x0
+ .rel.iplt      0x0000000000000000        0x0 vectors.o
 
-.igot.plt       0x00000000000583b8        0x0
+.data           0x00000000000579a0      0xa20
+                0x00000000000579a0                __data_start__ = .
+ *(.data .data.*)
+ .data          0x00000000000579a0        0x0 vectors.o
+ .data          0x00000000000579a0        0x0 main.o
+ .data          0x00000000000579a0        0x0 syscalls.o
+ .data          0x00000000000579a0        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(load.o)
+ .data          0x00000000000579a0        0x4 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(proc.o)
+ .data          0x00000000000579a4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(state.o)
+ .data          0x00000000000579a4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(string.o)
+ .data          0x00000000000579a4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(symbol.o)
+ .data          0x00000000000579a4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(variable.o)
+ .data          0x00000000000579a4      0x130 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(vm.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(array.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(class.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(crc.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(debug.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(error.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(gc.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(hash.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(init.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(kernel.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(numeric.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(object.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(print.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(range.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(version.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(mrblib.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(backtrace.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(compar.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(enum.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/project/raspberrypi-mruby-bare-metal/mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a(etc.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-abort.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .data          0x0000000000057ad4        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .data.__ctype_ptr__
+                0x0000000000057ad4        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+                0x0000000000057ad4                __ctype_ptr__
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fputs.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fread.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fseek.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-ftell.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fwrite.o)
+ .data          0x0000000000057ad8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .data.impure_data
+                0x0000000000057ad8      0x428 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000057f00        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+                0x0000000000057f00                _impure_ptr
+ .data          0x0000000000057f04        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .data          0x0000000000057f04        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .data          0x0000000000057f04        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .data.__malloc_av_
+                0x0000000000057f04      0x408 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x0000000000057f04                __malloc_av_
+ .data.__malloc_trim_threshold
+                0x000000000005830c        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x000000000005830c                __malloc_trim_threshold
+ .data.__malloc_sbrk_base
+                0x0000000000058310        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x0000000000058310                __malloc_sbrk_base
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memchr.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memcpy.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-realloc.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-refill.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-setjmp.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-signal.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-signalr.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .data          0x0000000000058314        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
+ .data.fpi.5209
+                0x0000000000058314       0x14 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
+ .data.fpinan.5245
+                0x0000000000058328       0x14 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtod.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strtoul.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vsnprintf.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-atexit.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fini.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-gdtoa-gethex.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-gdtoa-hexnan.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .data          0x000000000005833c        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .data.lc_message_charset
+                0x000000000005833c       0x20 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .data.lconv    0x000000000005835c       0x38 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .data.lc_ctype_charset
+                0x0000000000058394       0x20 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .data.__mb_cur_max
+                0x00000000000583b4        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                0x00000000000583b4                __mb_cur_max
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-strncmp.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-svfprintf.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__atexit.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-svfiprintf.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .data          0x00000000000583b8        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .data.__wctomb
+                0x00000000000583b8        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+                0x00000000000583b8                __wctomb
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_ceil.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_floor.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_fmod.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_log10.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-w_pow.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_fmod.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_log10.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_pow.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_sqrt.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_fabs.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_finite.o)
+ .data          0x00000000000583bc        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_lib_ver.o)
+ .data.__fdlib_version
+                0x00000000000583bc        0x1 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_lib_ver.o)
+                0x00000000000583bc                __fdlib_version
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_matherr.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_nan.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_rint.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_scalbn.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-e_log.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libm.a(lib_a-s_copysign.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_muldivdf3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_cmpdf2.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_fixdfsi.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_truncdfsf2.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_arm_cmpsf2.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_aeabi_uldivmod.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(bpabi.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
+ .data          0x00000000000583bd        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_clzsi2.o)
+                0x00000000000583c0                . = ALIGN (0x8)
+ *fill*         0x00000000000583bd        0x3 
+                0x00000000000583c0                __data_end__ = .
+                0x0000000000000a20                __data_size__ = (__data_end__ - __data_start__)
+
+.igot.plt       0x00000000000583c0        0x0
  .igot.plt      0x0000000000000000        0x0 vectors.o
 
 .init_array.00000
-                0x00000000000583b8        0x4
+                0x00000000000583c0        0x4
  .init_array.00000
-                0x00000000000583b8        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
-
-.ARM.exidx      0x00000000000583bc        0x8
- *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x00000000000583bc        0x8 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divdi3.o)
- .ARM.exidx     0x00000000000583c4        0x0 /Users/cho45/arm-cs-tools/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivdi3.o)
-                                          0x8 (size before relaxing)
-
-.rel.dyn        0x00000000000583c4        0x0
- .rel.iplt      0x0000000000000000        0x0 vectors.o
-                0x00000000000583c8                . = ALIGN (0x8)
-                0x00000000000583c8                __exidx_end = .
+                0x00000000000583c0        0x4 /Users/cho45/arm-cs-tools/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
 
 .bss            0x00000000000583c4      0x154
                 0x00000000000583c4                __bss_start__ = .

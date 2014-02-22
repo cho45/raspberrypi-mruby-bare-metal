@@ -1,6 +1,19 @@
 Raspberry Pi 上で mruby を Linux 抜きで動かす
 =============================================
 
+ファイル
+--------
+
+* Rakefile : Makefile の変わりに全部 Rakefile にビルド定義を書いてある
+* build_config.rb : mruby のビルド設定ファイル。ビルド時に mruby のディレクトリに symlink している
+* main.rb : Ruby レベルのエントリポイント。コンパイルされたバイトコードが使われる
+* main.c : C 言語レベルのエントリポイント。mruby_open() して実際にバイトコードを実行するプログラム
+* bytecode.h : コンパイル済みの main.rb を C のヘッダファイルにしたもの。バイトコードデータファイル
+* mrbgems/mruby-raspberrypi-gpio/ : Raspberry Pi の GPIO を使うための mrbgem。ビルド時に mruby の mrbgems ディレクトリに symlink している
+* kernel.img : ARM 実行形式のファイル。これを SD カードにコピーして実行させる
+* .gdbinit :  arm-none-eabi-gdb を実行したときにコンパイル済み main.elf を実行するためのもの
+
+
 動かしかた
 ----------
 

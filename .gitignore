@@ -4,4 +4,6 @@ mruby
 bytecode.h
 bootcode.bin
 kernel.img
+main.map
+main.mrb
 

@@ -52,6 +52,7 @@ task :clean => ["mruby"] do
 	rm_r "mruby/build/arm-eabi-raspberry-pi"
 	rm FileList["*.o"]
 	rm "bytecode.h"
+	rm "main.map", "main.mrb"
 	rm "kernel.img"
 end
 
