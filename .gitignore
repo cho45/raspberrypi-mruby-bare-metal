@@ -3,7 +3,8 @@ mruby
 *.elf
 bytecode.h
 bootcode.bin
-kernel.img
+*.img
+main.bin
 main.map
 main.mrb
 
