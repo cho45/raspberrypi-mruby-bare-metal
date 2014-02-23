@@ -40,7 +40,7 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_delay_us(mrb_state* mrb, mrb_val
 
 	uint32_t clock;
 	clock = GET32(SYSTEM_TIMER_CLO);
-	clock += 0x00100000; // delay * (SYSTEM_CLOCK / 1000000);
+	clock += delay * ((SYSTEM_CLOCK / 0xff) / 1000000.0);
 	PUT32(SYSTEM_TIMER_C0, clock);
 	PUT32(SYSTEM_TIMER_CS, 1);
 	// loop until bit is set

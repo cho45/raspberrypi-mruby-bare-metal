@@ -70,6 +70,7 @@ file "vectors.o" => "vectors.s" do
 end
 
 file "bytecode.h" => "main.rb" do
+	puts "MRBC main.rb"
 	bytes = `mruby/bin/mrbc -Bcode -o - main.rb`
 	File.open("bytecode.h", "w") do |f|
 		f.puts bytes

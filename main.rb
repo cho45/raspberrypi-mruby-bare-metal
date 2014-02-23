@@ -10,12 +10,15 @@
 
 pin = 16
 
+def sleep(n)
+	GPIO.delay_us(n * 1e6)
+end
+
 GPIO.direction(pin, :out)
 
 bool = false
 loop do
 	bool = !bool
 	GPIO.write(pin, bool)
-	GPIO.delay_us(1e6)
-#	5000.times {}
+	GPIO.sleep 1
 end

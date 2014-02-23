@@ -3,5 +3,5 @@ target sim
 load
 break main
 run
-break mrb_mruby_raspberrypi_gpio_gem_alternate_function_select
+break mrb_mruby_raspberrypi_gpio_gem_delay_us
 
