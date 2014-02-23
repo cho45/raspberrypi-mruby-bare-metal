@@ -23,9 +23,9 @@ void TIM2_IRQHandler ( void ) {
 volatile unsigned int n;
 #define L(x) {\
 	GPCLR(16);  \
-	for (n = 0; n < (0x50000 * x); n++) dummy(n); \
+	for (n = 0; n < (0x30000 * x); n++) dummy(n); \
 	GPSET(16); \
-	for (n = 0; n < 0x50000; n++) dummy(n); \
+	for (n = 0; n < 0x30000; n++) dummy(n); \
 	}
 // #define L(x) 
 

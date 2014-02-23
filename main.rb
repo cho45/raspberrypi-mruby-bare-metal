@@ -10,10 +10,6 @@
 
 pin = 16
 
-def sleep(n)
-	GPIO.delay_us(n * 1e6)
-end
-
 GPIO.direction(pin, :out)
 
 bool = false
