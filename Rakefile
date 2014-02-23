@@ -41,6 +41,11 @@ end
 
 task :install => %w"kernel.img bootcode.bin start.elf" do
 	copy_to = ENV["dest"] or raise "ENV['dest'] is required"
+	until File.exist?(copy_to)
+		print "Waiting for mounting #{copy_to}...\r"
+		$stdout.flush
+		sleep 1
+	end
 	cp %w"kernel.img bootcode.bin start.elf", copy_to
 	sh %{ diskutil eject /Volumes/SD }
 end
@@ -52,8 +57,8 @@ task :clean => ["mruby"] do
 	rm_r "mruby/build/arm-eabi-raspberry-pi"
 	rm FileList["*.o"]
 	rm "bytecode.h"
-	rm "main.map", "main.mrb"
 	rm "kernel.img"
+	rm ["main.map", "main.mrb"]
 end
 
 file "mruby" do
@@ -79,7 +84,9 @@ file "syscalls.o" => "syscalls.c" do
 	sh %{ arm-none-eabi-gcc #{COPS} #{CFLAGS} -c syscalls.c -o syscalls.o }
 end
 
-file "main.elf" => %w"memmap vectors.o main.o syscalls.o" do
+file "ruby/build/arm-eabi-raspberry-pi/lib/libmruby.a" => :build
+
+file "main.elf" => %w"memmap vectors.o main.o syscalls.o mruby/build/arm-eabi-raspberry-pi/lib/libmruby.a" do
 	sh %{ arm-none-eabi-ld vectors.o main.o syscalls.o -Map=main.map -T memmap -o main.elf -L#{ULIBDIR} #{ULIBS} #{LIB} -lc -lm -lgcc  }
 end
 

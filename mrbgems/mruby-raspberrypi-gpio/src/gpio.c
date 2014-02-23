@@ -21,7 +21,7 @@ extern unsigned int GET32 ( unsigned int );
 //	// mrb_funcall(mrb, mrb_obj_value(interrupt_module), "tim2", 0);
 //}
 
-static inline void mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(uint8_t pin, uint8_t func) {
+static inline void mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(int pin, uint8_t func) {
 	func &= 0b111;
 	unsigned int reg;
 	reg = (pin < 10) ? GPFSEL0 :
@@ -31,7 +31,22 @@ static inline void mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(uint
 	      (pin < 50) ? GPFSEL4 :
 	                   GPFSEL5 ;
 	pin = (pin % 10) * 3;
-	PUT32(reg, (GET32(reg) & ~(0b111 << pin)) | func);
+	PUT32(reg, (GET32(reg) & ~(0b111 << pin)) | (func << pin));
+}
+
+static mrb_value mrb_mruby_raspberrypi_gpio_gem_delay_us(mrb_state* mrb, mrb_value self) {
+	mrb_int delay;
+	mrb_get_args(mrb, "i", &delay);
+
+	uint32_t clock;
+	clock = GET32(SYSTEM_TIMER_CLO);
+	clock += 0x00100000; // delay * (SYSTEM_CLOCK / 1000000);
+	PUT32(SYSTEM_TIMER_C0, clock);
+	PUT32(SYSTEM_TIMER_CS, 1);
+	// loop until bit is set
+	while ((GET32(SYSTEM_TIMER_CS) & 1) == 0) { }
+
+	return mrb_nil_value();
 }
 
 static mrb_value mrb_mruby_raspberrypi_gpio_gem_write(mrb_state* mrb,  mrb_value self) {
@@ -86,6 +101,7 @@ void mrb_mruby_raspberrypi_gpio_gem_init(mrb_state* mrb) {
 	mrb_define_module_function(mrb, GPIO, "write", mrb_mruby_raspberrypi_gpio_gem_write, ARGS_REQ(2));
 	mrb_define_module_function(mrb, GPIO, "read", mrb_mruby_raspberrypi_gpio_gem_read, ARGS_REQ(1));
 	mrb_define_module_function(mrb, GPIO, "direction", mrb_mruby_raspberrypi_gpio_gem_direction, ARGS_REQ(2));
+ 	mrb_define_module_function(mrb, GPIO, "delay_us", mrb_mruby_raspberrypi_gpio_gem_delay_us, ARGS_REQ(1));
 }
 
 void mrb_mruby_raspberrypi_gpio_gem_final(mrb_state* mrb) {

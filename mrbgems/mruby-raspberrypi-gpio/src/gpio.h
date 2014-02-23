@@ -1,6 +1,7 @@
 // BUS address -> ARM physical address
 #define BUS_ADDRESS(bus_address) (bus_address - 0x5e000000)
 
+// page 90
 // GPIO Alternate function select register
 #define GPFSEL0 BUS_ADDRESS(0x7E200000)
 #define GPFSEL1 BUS_ADDRESS(0x7E200004)
@@ -58,4 +59,29 @@
 // GPIO Pull-up/down Clock Registers
 #define GPPUDCLK0 BUS_ADDRESS(0x7E200098)
 #define GPPUDCLK1 BUS_ADDRESS(0x7E20009C)
+
+// page 172
+#define SYSTEM_TIMER_BASE BUS_ADDRESS(0x7E003000)
+#define SYSTEM_TIMER_CS   ( SYSTEM_TIMER_BASE+0x00 ) 
+#define SYSTEM_TIMER_CLO  ( SYSTEM_TIMER_BASE+0x04 ) 
+#define SYSTEM_TIMER_CHI  ( SYSTEM_TIMER_BASE+0x08 ) 
+#define SYSTEM_TIMER_C0   ( SYSTEM_TIMER_BASE+0x0C ) 
+#define SYSTEM_TIMER_C1   ( SYSTEM_TIMER_BASE+0x10 ) 
+#define SYSTEM_TIMER_C2   ( SYSTEM_TIMER_BASE+0x14 ) 
+#define SYSTEM_TIMER_C3   ( SYSTEM_TIMER_BASE+0x18 ) 
+
+// page 196
+#define ARM_TIMER_BASE                 BUS_ADDRESS(0x7E00B000)
+#define ARM_TIMER_LOAD                 ( ARM_TIMER_BASE+0x0400 ) 
+#define ARM_TIMER_VALUE                ( ARM_TIMER_BASE+0x0404 ) 
+#define ARM_TIMER_CONTROL              ( ARM_TIMER_BASE+0x0408 ) 
+#define ARM_TIMER_IRQ_CLEAR_ACK        ( ARM_TIMER_BASE+0x040C ) 
+#define ARM_TIMER_RAW_IRQ              ( ARM_TIMER_BASE+0x0410 ) 
+#define ARM_TIMER_MASKED_IRQ           ( ARM_TIMER_BASE+0x0414 ) 
+#define ARM_TIMER_RELOAD               ( ARM_TIMER_BASE+0x0418 ) 
+#define ARM_TIMER_PRE_DIVIDER          ( ARM_TIMER_BASE+0x041C ) 
+#define ARM_TIMER_FREE_RUNNING_COUNTER ( ARM_TIMER_BASE+0x0420 ) 
+
+// 250MHz
+#define SYSTEM_CLOCK 250000000
 

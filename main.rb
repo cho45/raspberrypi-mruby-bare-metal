@@ -16,5 +16,6 @@ bool = false
 loop do
 	bool = !bool
 	GPIO.write(pin, bool)
-	5000.times { }
+	GPIO.delay_us(1e6)
+#	5000.times {}
 end
