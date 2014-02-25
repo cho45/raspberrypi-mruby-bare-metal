@@ -17,9 +17,6 @@ extern void PUT32 ( unsigned int, unsigned int );
 extern unsigned int GET32 ( unsigned int );
 extern void dummy ( unsigned int );
 
-void TIM2_IRQHandler ( void ) {
-}
-
 volatile unsigned int n;
 #define L(x) {\
 	GPCLR(16);  \

@@ -12,6 +12,7 @@ _start:
     ldr pc,unused_handler
     ldr pc,irq_handler
     ldr pc,fiq_handler
+
 reset_handler:      .word reset
 undefined_handler:  .word hang
 swi_handler:        .word hang
@@ -50,26 +51,27 @@ reset:
     ;@mov r0,#0x53
     ;@msr cpsr_c, r0
 
-				/* copy initialized variables .data section  (Copy from ROM to RAM) */
-                ldr     R1, =__text_end__
-                ldr     R2, =__data_start__
-                ldr     R3, =__data_end__
-1:        		cmp     R2, R3
-                ldrlo   R0, [R1], #4
-                strlo   R0, [R2], #4
-                blo     1b
+    /* copy initialized variables .data section  (Copy from ROM to RAM) */
+    ldr     R1, =__text_end__
+    ldr     R2, =__data_start__
+    ldr     R3, =__data_end__
+1:  cmp     R2, R3
+    ldrlo   R0, [R1], #4
+    strlo   R0, [R2], #4
+    blo     1b
 
 
-				/* Clear uninitialized variables .bss section (Zero init)  */
-                mov     R0, #0
-                ldr     R1, =__bss_start__
-                ldr     R2, =__bss_end__
-2:				cmp     R1, R2
-                strlo   R0, [R1], #4
-                blo     2b
-
+    /* Clear uninitialized variables .bss section (Zero init)  */
+    mov     R0, #0
+    ldr     R1, =__bss_start__
+    ldr     R2, =__bss_end__
+2:  cmp     R1, R2
+    strlo   R0, [R1], #4
+    blo     2b
 
     bl main
+
+
 hang: b hang
 
 .globl PUT32
@@ -128,7 +130,7 @@ enable_irq:
 
 irq:
     push {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}
-    bl TIM2_IRQHandler
+    bl timer_irq_handler
     pop  {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}
     subs pc,lr,#4
 

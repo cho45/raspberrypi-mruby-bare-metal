@@ -14,12 +14,9 @@
 extern void PUT32 ( unsigned int, unsigned int );
 extern unsigned int GET32 ( unsigned int );
 
-// static uint16_t micro_second = 0;
-
-//void TIM2_IRQHandler ( void ) {
-//	micro_second++;
-//	// mrb_funcall(mrb, mrb_obj_value(interrupt_module), "tim2", 0);
-//}
+void timer_irq_handler ( void ) {
+	PUT32(ARM_TIMER_IRQ_CLEAR_ACK, 0);
+}
 
 static inline void mrb_mruby_raspberrypi_gpio_gem_alternate_function_select(int pin, uint8_t func) {
 	func &= 0b111;
@@ -38,13 +35,31 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_delay_us(mrb_state* mrb, mrb_val
 	mrb_int delay;
 	mrb_get_args(mrb, "i", &delay);
 
-	uint32_t clock;
-	clock = GET32(SYSTEM_TIMER_CLO);
-	clock += delay * ((SYSTEM_CLOCK / 0xff) / 1000000.0);
-	PUT32(SYSTEM_TIMER_C0, clock);
-	PUT32(SYSTEM_TIMER_CS, 1);
-	// loop until bit is set
-	while ((GET32(SYSTEM_TIMER_CS) & 1) == 0) { }
+	// Reset timer flags
+	PUT32(ARM_TIMER_CONTROL, 0x3E0020);
+	// Load count down timer value
+	PUT32(ARM_TIMER_LOAD, delay-1);
+	PUT32(ARM_TIMER_RELOAD, delay-1);
+	// predevider = (apb_clk - freq) / freq
+	PUT32(ARM_TIMER_PRE_DIVIDER, 250 - 1);
+	PUT32(ARM_TIMER_IRQ_CLEAR_ACK, 0);
+	PUT32(ARM_TIMER_CONTROL,
+		(0x3E<<16) | // default free-running pre-scaler
+		(1<<7)     | // timer enabled
+		(1<<5)     | // timer interrupt enabled
+		(1<<1)       // 23-bit counter
+	);
+
+	// Enable ARM Timer IRQ
+	PUT32(ARM_INTERRUPT_ENABLE_BASIC_IRQS, 1);
+	
+	while ((GET32(ARM_INTERRUPT_IRQ_BASIC_PENDING) & 1) == 0) {
+		// Waiting For Interrupt
+		asm volatile ("wfi");
+	}
+
+	// Disable ARM Timer IRQ
+	PUT32(ARM_INTERRUPT_DISABLE_BASIC_IRQS, 1);
 
 	return mrb_nil_value();
 }
