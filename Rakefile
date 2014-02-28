@@ -14,11 +14,11 @@ MRUBY_ROOT = Pathname("mruby").expand_path
 
 ARMGCC_ROOT = Pathname(which("arm-none-eabi-gcc")).parent.parent
 
-AOPS = "-mcpu=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp --warn --fatal-warnings "
+AOPS = "-mcpu=arm1176jzf-s -mfloat-abi=soft -mfpu=vfp --warn --fatal-warnings "
 
 COPS = "-Wall -nostartfiles -ffreestanding"
 
-CFLAGS = "-mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp -O0 -ggdb -g"
+CFLAGS = "-mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp -O1 -ggdb -g"
 
 INCDIR  = "#{MRUBY_ROOT}/include"
 ULIBDIR = "#{MRUBY_ROOT}/build/arm-eabi-raspberry-pi/lib"

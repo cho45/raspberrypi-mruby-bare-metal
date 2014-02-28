@@ -3,8 +3,8 @@ MEMORY
 	RAM : ORIGIN = 0x8000, LENGTH = 256M
 }
 
-/* heap_size = 128M; */
-heap_size = 1M;
+heap_size = 128M;
+/* heap_size = 1M; */
 
 SECTIONS
 {
