@@ -20,55 +20,62 @@ prefetch_handler:   .word hang
 data_handler:       .word hang
 unused_handler:     .word hang
 irq_handler:        .word irq
-fiq_handler:        .word hang
+fiq_handler:        .word fiq
 
 reset:
+    /* Set interrupt handler to radical address from 0x8000
+     */
     mov r0,#0x8000
     mov r1,#0x0000
-    ldmia r0!,{r2,r3,r4,r5,r6,r7,r8,r9}
-    stmia r1!,{r2,r3,r4,r5,r6,r7,r8,r9}
+    /* copy machine code 8 bytes at once */
+    ldmia r0!,{r2,r3,r4,r5,r6,r7,r8,r9} /* load machine code from 0x8000 */
+    stmia r1!,{r2,r3,r4,r5,r6,r7,r8,r9} /* store code to 0x0000 */
+    /* more 16 bytes */
     ldmia r0!,{r2,r3,r4,r5,r6,r7,r8,r9}
     stmia r1!,{r2,r3,r4,r5,r6,r7,r8,r9}
 
+    /* Initialize each mode stack pointer (sp == r13)
+     * (each exception modes have difference sp)
+     *  CPSR register lowest 8bit: (page A2-11)
+     *      I    [7]   -> IRQ disabled (set 1 to disable)
+     *      F    [6]   -> FIQ disabled (set 1 to disable)
+     *      T    [5]   -> Always set 0 in ARM state
+     *      MODE [4:0] -> Mode bit
+     */
 
-    ;@ (PSR_IRQ_MODE|PSR_FIQ_DIS|PSR_IRQ_DIS)
+    /* IRQ Mode (0b11010010),   */
     mov r0,#0xD2
-    msr cpsr_c,r0
+    msr CPSR_c,r0
     mov sp,#0x8000
 
-    ;@ (PSR_FIQ_MODE|PSR_FIQ_DIS|PSR_IRQ_DIS)
+    /* FIQ Mode (0b11010001) */
     mov r0,#0xD1
-    msr cpsr_c,r0
+    msr CPSR_c,r0
     mov sp,#0x4000
 
-    ;@ (PSR_SVC_MODE|PSR_FIQ_DIS|PSR_IRQ_DIS)
+    /* Supervisor Mode (0b11010011) */
     mov r0,#0xD3
-    msr cpsr_c,r0
+    msr CPSR_c,r0
     mov sp,#0xF000000
-;@    mov sp,#0x8000000
 
-    ;@ SVC MODE, IRQ ENABLED, FIQ DIS
-    ;@mov r0,#0x53
-    ;@msr cpsr_c, r0
-
-    /* copy initialized variables .data section  (Copy from ROM to RAM) */
-    ldr     R1, =__text_end__
-    ldr     R2, =__data_start__
-    ldr     R3, =__data_end__
-1:  cmp     R2, R3
-    ldrlo   R0, [R1], #4
-    strlo   R0, [R2], #4
+    /* Copy initialized variables .data section  (Copy from ROM to RAM) */
+    ldr     r1, =__text_end__
+    ldr     r2, =__data_start__
+    ldr     r3, =__data_end__
+1:  cmp     r2, r3
+    ldrlo   r0, [r1], #4
+    strlo   r0, [r2], #4
     blo     1b
 
-
-    /* Clear uninitialized variables .bss section (Zero init)  */
-    mov     R0, #0
-    ldr     R1, =__bss_start__
-    ldr     R2, =__bss_end__
-2:  cmp     R1, R2
-    strlo   R0, [R1], #4
+    /* Clear uninitialized variables .bss section  */
+    mov     r0, #0
+    ldr     r1, =__bss_start__
+    ldr     r2, =__bss_end__
+2:  cmp     r1, r2
+    strlo   r0, [r1], #4
     blo     2b
 
+    /* call C main function */
     bl main
 
 
@@ -123,8 +130,17 @@ heap_limit:
 
 .globl enable_irq
 enable_irq:
+    /* read/modify/write sequence */
     mrs r0,cpsr
     bic r0,r0,#0x80
+    msr cpsr_c,r0
+    bx lr
+
+.globl enable_fiq
+enable_fiq:
+    /* read/modify/write sequence */
+    mrs r0,cpsr
+    bic r0,r0,#0x40
     msr cpsr_c,r0
     bx lr
 
@@ -133,6 +149,11 @@ irq:
     bl timer_irq_handler
     pop  {r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}
     subs pc,lr,#4
+
+fiq:
+    nop
+    subs pc,lr,#4
+
 
 ;@-------------------------------------------------------------------------
 ;@-------------------------------------------------------------------------

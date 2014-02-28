@@ -8,31 +8,30 @@ def which(name)
 	} or raise "#{name} is not in PATH"
 end
 
+ROOT = Pathname.pwd.expand_path
+
 MRUBY_ROOT = Pathname("mruby").expand_path
 
 ARMGCC_ROOT = Pathname(which("arm-none-eabi-gcc")).parent.parent
 
-AOPS = "-mcpu=arm1176jzf-s -mfloat-abi=soft -mfpu=vfp --warn --fatal-warnings "
+AOPS = "-mcpu=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp --warn --fatal-warnings "
 
 COPS = "-Wall -nostartfiles -ffreestanding"
 
-CFLAGS = "-mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=soft -mfpu=vfp -O0 -ggdb -g"
+CFLAGS = "-mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp -O0 -ggdb -g"
 
-INCDIR = MRUBY_ROOT + "include"
-ULIBDIR = MRUBY_ROOT + "build/arm-eabi-raspberry-pi/lib"
-LIB = "-L#{ARMGCC_ROOT}/arm-none-eabi/lib/ -L#{ARMGCC_ROOT}/lib/gcc/arm-none-eabi/4.7.3"
-ULIBS = "-lmruby"
+INCDIR  = "#{MRUBY_ROOT}/include"
+ULIBDIR = "#{MRUBY_ROOT}/build/arm-eabi-raspberry-pi/lib"
+LIB     = [
+	"#{ARMGCC_ROOT}/arm-none-eabi/lib/",
+	Dir["#{ARMGCC_ROOT}/lib/gcc/arm-none-eabi/*"].last,
+].map {|i| "-L#{i}"}.join(" ")
+ULIBS   = "-lmruby"
 
 task :default => "kernel.img"
 
 task :build => "mruby" do
-	mruby = Pathname("mruby")
-	symlinks = %w[build_config.rb] + Dir.glob("mrbgems/*")
-	symlinks.map {|i| Pathname(i) }.each do |f|
-		path = mruby + f
-		path.unlink
-		path.make_symlink(f.expand_path)
-	end
+	ENV['MRUBY_CONFIG'] = (ROOT + "build_config.rb").to_s
 
 	Dir.chdir("mruby") do
 		sh %{ rake }
@@ -51,14 +50,11 @@ task :install => %w"kernel.img bootcode.bin start.elf" do
 end
 
 task :clean => ["mruby"] do
-#	Dir.chdir("mruby") do
-#		sh %{ rake clean }
-#	end
-	rm_r "mruby/build/arm-eabi-raspberry-pi"
-	rm FileList["*.o"]
-	rm "bytecode.h"
-	rm "kernel.img"
-	rm ["main.map", "main.mrb"]
+	rm_r "mruby/build/arm-eabi-raspberry-pi" rescue nil
+	rm FileList["*.o"] rescue nil
+	rm "bytecode.h" rescue nil
+	rm "kernel.img" rescue nil
+	rm ["main.elf", "main.map", "main.mrb"] rescue nil
 end
 
 file "mruby" do
@@ -120,3 +116,26 @@ namespace :bootloader do
 	end
 
 end
+
+#namespace :gcc do
+#	task :install do
+#		dest = Pathname("~/sdk/gcc-arm-none-eabi")
+#		if dest.exist?
+#			puts "Already installed at #{dest}"
+#			exit 1
+#		end
+#
+#		puts "Installing gcc-arm-none-eabi cross compiler to #{dest} OK? [yN]"
+#		exit 1 unless $stdin.gets =~ /y/i
+#		dest.parent.mkpath
+#		Dir.chdir(dest.parent) do
+#			file = "gcc-arm-none-eabi-4_8-2013q4-20131218-mac.tar.bz2"
+#			unless File.exist?(file)
+#				sh %{ wget https://launchpad.net/gcc-arm-embedded/4.8/4.8-2013-q4-major/+download/#{file} }
+#			end
+#			sh %{ tar xjvf #{file} }
+#			mv "gcc-arm-none-eabi-4_8-2013q4-20131218-mac", dest
+#		end
+#		puts "Installed. You should add '#{dest}/bin' to PATH"
+#	end
+#end

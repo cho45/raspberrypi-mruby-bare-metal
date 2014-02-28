@@ -94,11 +94,11 @@ end
 MRuby::CrossBuild.new('arm-eabi-raspberry-pi') do |conf|
 	toolchain :gcc
 
-	conf.gem 'mrbgems/mruby-raspberrypi-gpio'
+	conf.gem "#{File.dirname(__FILE__)}/mrbgems/mruby-raspberrypi-gpio"
 
 	conf.cc.command = which('arm-none-eabi-gcc')
 	conf.cc.include_paths = ["#{MRUBY_ROOT}/include/"]
-	conf.cc.flags << %(-Wall -nostartfiles -ffreestanding -g -ggdb -g -O0 -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=soft -mfpu=vfp)
+	conf.cc.flags << %(-Wall -nostartfiles -ffreestanding -g -ggdb -g -O0 -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -mfpu=vfp)
 
 	conf.linker.command = which('arm-none-eabi-gcc')
 
