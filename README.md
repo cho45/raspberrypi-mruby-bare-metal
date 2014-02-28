@@ -22,10 +22,7 @@ Raspberry Pi 上で mruby を Linux 抜きで動かす
 
 ### クロスコンパイル環境をつくる
 
-これが一番面倒……
-
-https://github.com/jsnyder/arm-eabi-toolchain を使って ARM のクロスコンパイル環境をつくる。
-~/arm-cs-tools/bin に PATH を通す
+https://launchpad.net/gcc-arm-embedded を入れてパスを通す
 
 ### ビルド
 
