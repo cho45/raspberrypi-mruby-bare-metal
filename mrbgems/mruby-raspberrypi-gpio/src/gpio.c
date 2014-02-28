@@ -52,10 +52,18 @@ static mrb_value mrb_mruby_raspberrypi_gpio_gem_delay_us(mrb_state* mrb, mrb_val
 
 	// Enable ARM Timer IRQ
 	PUT32(ARM_INTERRUPT_ENABLE_BASIC_IRQS, 1);
-	
+
 	while ((GET32(ARM_INTERRUPT_IRQ_BASIC_PENDING) & 1) == 0) {
 		// Waiting For Interrupt
-		asm volatile ("wfi");
+		// ARM1176JZ-F does not support wfi instruction. WFI in this cpu is interpreted as NOP.
+		// asm volatile ("wfi");
+
+		// But ARM1176JZ-F support waiting for interrupt by coprocessor 15.
+		asm volatile (
+			"mov r1, #0;"
+			"mcr p15, #0, r1, c7, c0, #4;"
+			:::
+		);
 	}
 
 	// Disable ARM Timer IRQ
