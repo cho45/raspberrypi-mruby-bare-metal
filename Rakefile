@@ -115,9 +115,7 @@ namespace :jtag do
 	end
 
 	task :server do
-		sh %{ sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext } rescue nil
-		sh %{ openocd -d -f openocd/generic-ft4232h.cfg -f openocd/raspi.cfg }
-		sh %{ sudo kextload /System/Library/Extensions/FTDIUSBSerialDriver.kext } rescue nil
+		sh %{ openocd -d -f openocd/generic-ft4232h-libftdi.cfg -f openocd/raspi.cfg }
 	end
 end
 
