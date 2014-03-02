@@ -92,30 +92,59 @@ file "kernel.img" => [:build, "main.elf"] do
 	puts "kernel.img: #{File.size('kernel.img') / 1024}KB"
 end
 
-namespace :bootloader do
-	task :setup => 'bootloader.img' do
-		copy_to = ENV["dest"] or raise "ENV['dest'] is required"
-		until File.exist?(copy_to)
-			print "Waiting for mounting #{copy_to}...\r"
-			$stdout.flush
-			sleep 1
+namespace :jtag do
+	task :run => 'main.elf' do
+		require "socket"
+		s = TCPSocket.open('localhost', 4444)
+		th = Thread.start do
+			while l = s.gets
+				puts l
+			end
 		end
-		cp "bootloader.img", copy_to + "/kernel.img"
-		cp %w"bootcode.bin start.elf", copy_to
-		sh %{ diskutil eject /Volumes/SD }
+		def s.command(str)
+			$stdout.puts ">>> #{str}"
+			write("#{str}\r\n")
+		end
+
+		s.command "halt"
+		s.command "load_image main.elf"
+		s.command "resume 0"
+		s.command "exit"
+
+		th.join
 	end
 
-#	task :install => "main.elf" do
-#		# brew install lrzsz
-#		sh %{ arm-none-eabi-objcopy main.elf -O binary main.bin }
-#		sh %{ lsx -bk main.bin < /dev/tty.usbserial-FTB3L9UG > /dev/tty.usbserial-FTB3L9UG }
-#	end
-
-	file "bootloader.img" do
-		sh %{ wget https://github.com/dwelch67/raspberrypi/raw/master/bootloader05/kernel.img -O bootloader.img }
+	task :server do
+		sh %{ sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext }
+		sh %{ openocd -d -f openocd/generic-ft4232h.cfg -f openocd/raspi.cfg }
+		sh %{ sudo kextload /System/Library/Extensions/FTDIUSBSerialDriver.kext }
 	end
-
 end
+
+#namespace :bootloader do
+#	task :setup => 'bootloader.img' do
+#		copy_to = ENV["dest"] or raise "ENV['dest'] is required"
+#		until File.exist?(copy_to)
+#			print "Waiting for mounting #{copy_to}...\r"
+#			$stdout.flush
+#			sleep 1
+#		end
+#		cp "bootloader.img", copy_to + "/kernel.img"
+#		cp %w"bootcode.bin start.elf", copy_to
+#		sh %{ diskutil eject /Volumes/SD }
+#	end
+#
+##	task :install => "main.elf" do
+##		# brew install lrzsz
+##		sh %{ arm-none-eabi-objcopy main.elf -O binary main.bin }
+##		sh %{ lsx -bk main.bin < /dev/tty.usbserial-FTB3L9UG > /dev/tty.usbserial-FTB3L9UG }
+##	end
+#
+#	file "bootloader.img" do
+#		sh %{ wget https://github.com/dwelch67/raspberrypi/raw/master/bootloader05/kernel.img -O bootloader.img }
+#	end
+#
+#end
 
 #namespace :gcc do
 #	task :install do
